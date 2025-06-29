@@ -43,5 +43,6 @@ This is a blog application built with React, Redux, and Tailwind CSS. It allows 
 
 - Microsoft powerpoint for wireframe design
 - Used ChatGPT for learning Tailwind CSS
+- Used ChatGPT for generating dummy blogs data
 - Haven't used Github Copilot for any code generation, All code is written manually. I used this as an opportunity to learn Tailwind CSS.
 - For writing this README file, I used ChatGPT to generate the content based on the project details.
