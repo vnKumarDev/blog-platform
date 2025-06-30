@@ -2,19 +2,17 @@ import React from "react";
 import BlogList from "./BlogList";
 import SearchInput from "./SearchInput";
 import CategoryFilter from "./CategoryFilter";
-import Button from "./Button";
 import BlogContainerHeader from "./BlogContainerHeader";
 import { useSelector } from "react-redux";
 import { BlogListLoader } from "./Loaders";
+import BlogDetails from "./BlogDetails";
 
 const BlogContainer = () => {
   const utilityState = useSelector((state) => state.utility);
+  const blogsState = useSelector((state) => state.blogs);
 
-  if (utilityState.loading?.["blogs-list"]) {
-    return <BlogListLoader />;
-  }
-
-  return (
+  console.log("blogState", blogsState.selectedBlog);
+  return !blogsState.selectedBlog ? (
     <div
       className="py-2 px-2 sm:px-3 flex flex-col gap-3 overflow-y-auto"
       style={{
@@ -31,10 +29,16 @@ const BlogContainer = () => {
         <CategoryFilter />
       </div>
 
-      <div className="">
-        <BlogList />
-      </div>
+      {utilityState.loading?.["blogs-list"] ? (
+        <BlogListLoader />
+      ) : (
+        <div className="">
+          <BlogList />
+        </div>
+      )}
     </div>
+  ) : (
+    <BlogDetails />
   );
 };
 
