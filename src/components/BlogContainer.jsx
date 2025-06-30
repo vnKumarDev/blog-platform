@@ -11,7 +11,6 @@ const BlogContainer = () => {
   const utilityState = useSelector((state) => state.utility);
   const blogsState = useSelector((state) => state.blogs);
 
-  console.log("blogState", blogsState.selectedBlog);
   return !blogsState.selectedBlog ? (
     <div
       className="py-2 px-2 sm:px-3 flex flex-col gap-3 overflow-y-auto"
@@ -38,7 +37,14 @@ const BlogContainer = () => {
       )}
     </div>
   ) : (
-    <BlogDetails />
+    <div
+      className="py-2 px-2 sm:px-3 flex flex-col gap-3 overflow-y-auto"
+      style={{
+        height: "calc(100vh - 45px)",
+      }}
+    >
+      <BlogDetails />
+    </div>
   );
 };
 

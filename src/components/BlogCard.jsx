@@ -1,6 +1,4 @@
 import React from "react";
-import { blogsList } from "../mock-data/blogs";
-import Button from "./Button";
 import Chip from "./Chip";
 import Avatar from "./Avatar";
 import { formatTimestamp } from "../utils/utility";
@@ -8,13 +6,13 @@ import { Clock } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { setSelectedBlog } from "../slices/blogsSlice";
 
-const BlogCard = ({ blog, index }) => {
+const BlogCard = ({ blog, index, source }) => {
   const dispatch = useDispatch();
 
   return (
     <div
       key={blog.id}
-      className="border-1 rounded p-2 sm:p-3 border-gray-300 grid grid-cols-3 gap-2 bg-white hover:cursor-pointer transition-transform duration-200 ease-in-out hover:shadow-md hover:-translate-y-1 h-full"
+      className="border-1 rounded p-2 border-gray-300 grid grid-cols-3 gap-2 bg-white hover:cursor-pointer transition-transform duration-200 ease-in-out hover:shadow-md hover:-translate-y-1 h-full"
       onClick={() => {
         dispatch(setSelectedBlog(blog));
       }}
@@ -40,7 +38,7 @@ const BlogCard = ({ blog, index }) => {
             <div
               className={`col-span-4 text-xs text-gray-500
     line-clamp-2
-    ${index === 0 ? "md:line-clamp-5" : ""}
+    ${source === "blogList" && index === 0 ? "md:line-clamp-5" : ""}
   `}
             >
               {blog.content}

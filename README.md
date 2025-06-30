@@ -18,6 +18,8 @@ This is a blog application built with React, Redux, and Tailwind CSS. It allows 
 # Features implemented
 
 - Blog list UI with sample data
+- Blog details UI
+- Related articles section
 - Responsive design
 - Animated loading pulse effect
 - Redux for state management

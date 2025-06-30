@@ -1,8 +1,7 @@
 import { useSelector } from "react-redux";
-import { blogsList, categories } from "../mock-data/blogs";
 import BlogCard from "./BlogCard";
 
-const BlogList = () => {
+const BlogList = ({ source = "blogList" }) => {
   const blogsState = useSelector((state) => state.blogs);
   const utilityState = useSelector((state) => state.utility);
 
@@ -12,7 +11,11 @@ const BlogList = () => {
 
   return (
     <div className="overflow-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mt-2">
+      <div
+        className={`grid grid-cols-1 ${
+          source === "blogList" ? "sm:grid-cols-2" : "grid-cols-1"
+        } gap-2 sm:gap-4 mt-2`}
+      >
         {blogsState?.blogsList
           ?.slice()
           .filter((blog) => {
@@ -30,9 +33,11 @@ const BlogList = () => {
             return (
               <div
                 key={blog.id}
-                className={`col-span-1 ${index === 0 ? "sm:col-span-2" : ""}`}
+                className={`col-span-1 ${
+                  source === "blogList" && index === 0 ? "sm:col-span-2" : ""
+                }`}
               >
-                <BlogCard blog={blog} index={index} />
+                <BlogCard blog={blog} index={index} source={source} />
               </div>
             );
           })}
